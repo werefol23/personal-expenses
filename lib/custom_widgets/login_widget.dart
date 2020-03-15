@@ -8,6 +8,10 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
+
+  final TextEditingController _userInputController = TextEditingController();
+  final TextEditingController _passInputController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -21,6 +25,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 width: 250,
                 child: TextField(
                   keyboardType: TextInputType.text,
+                  controller: _userInputController,
                   decoration: InputDecoration(
                       prefixIcon: Icon(Icons.person),
                       labelText: 'Usuario',
@@ -36,6 +41,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 width: 250,
                 child: TextField(
                   keyboardType: TextInputType.visiblePassword,
+                  controller: _passInputController,
                   obscureText: true,
                   decoration: InputDecoration(
                       prefixIcon: Icon(Icons.lock_outline),
@@ -62,6 +68,9 @@ class _LoginWidgetState extends State<LoginWidget> {
               RaisedButton(
                 onPressed: () {
                   print('Button Pressed');
+                  print(_userInputController.text);
+                  print(_passInputController.text);
+                  Navigator.of(context).pushReplacementNamed('/main-page');
                 },
                 child: Text(
                   'Ingresar',

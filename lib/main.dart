@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import './navRoutes/routes.dart';
 import './pages/login_page.dart';
 import './pages/picture_page.dart';
 
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: LoginPage(),
+      routes: AppRoutes().routes,
     );
   }
 }
