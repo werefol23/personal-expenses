@@ -9,6 +9,9 @@ class LoginWidget extends StatefulWidget {
 
 class _LoginWidgetState extends State<LoginWidget> {
 
+  final String _user = 'android';
+  final String _pass = 'develop';
+
   final TextEditingController _userInputController = TextEditingController();
   final TextEditingController _passInputController = TextEditingController();
 
@@ -70,7 +73,26 @@ class _LoginWidgetState extends State<LoginWidget> {
                   print('Button Pressed');
                   print(_userInputController.text);
                   print(_passInputController.text);
-                  Navigator.of(context).pushReplacementNamed('/main-page');
+                  final validation = this._validateCredentials();
+                  if (validation) {
+                    Navigator.of(context).pushReplacementNamed('/main-page');
+                  } else {
+                    showDialog(
+                      context: context,
+                      builder: (_) => AlertDialog(
+                        shape: CircleBorder(),
+                        title: Text('Login incorrecto'),
+                        content: Text('Verifique sus credenciales luego intete ingresar de nuevo!'),
+                        actions: <Widget>[
+                          FlatButton(
+                            onPressed: (){
+                              Navigator.pop(context);
+                            }, 
+                            child: Text('OK'))
+                        ],
+                      )
+                    );
+                  }
                 },
                 child: Text(
                   'Ingresar',
@@ -91,5 +113,17 @@ class _LoginWidgetState extends State<LoginWidget> {
         ],
       ),
     );
+  }
+
+  bool _validateCredentials() {
+    if ( this._userInputController.text != null && this._passInputController.text != null ) {
+      if ( this._userInputController.text == this._user && this._passInputController.text == this._pass ) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
   }
 }
