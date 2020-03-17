@@ -75,12 +75,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                   print(_passInputController.text);
                   final validation = this._validateCredentials();
                   if (validation) {
-                    Navigator.of(context).pushReplacementNamed('/main-page');
+                    Navigator.of(context).pushReplacementNamed('/agregar-usuario');
                   } else {
                     showDialog(
                       context: context,
                       builder: (_) => AlertDialog(
-                        shape: CircleBorder(),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30)
+                        ),
                         title: Text('Login incorrecto'),
                         content: Text('Verifique sus credenciales luego intete ingresar de nuevo!'),
                         actions: <Widget>[

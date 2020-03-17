@@ -2,15 +2,12 @@ import '../interfacesLikeClasses/requiredFields.dart';
 
 class User implements RequiredFields {
   int userId;
-  String firstName;
-  String secondName;
-  String firstLastName;
-  String secondLastName;
+  String names;
+  String lastNames;
   String fullName;
-  int age;
-  String birthDate;
   int gender;
-  String email;
+  String userName;
+  String avatar;
 
   // Interface fields
   int createUserId;
